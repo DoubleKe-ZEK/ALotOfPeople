@@ -15,12 +15,12 @@ public class RoomNameListManager : MonoBehaviourPunCallbacks
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         //删除
-        for (int i = 0; i < gridLayout.childCount; i++)
+        for (int i = 1; i < gridLayout.childCount; i++)
         {
             if (gridLayout.GetChild(i).gameObject.GetComponentInChildren<Text>().text==roomList[i].Name)
             {
                 Destroy(gridLayout.GetChild(i).gameObject);
-                if (roomList[i].PlayerCount==0)
+                if (roomList[i].PlayerCount==1)
                 {
                     roomList.Remove(roomList[i]);
                 }

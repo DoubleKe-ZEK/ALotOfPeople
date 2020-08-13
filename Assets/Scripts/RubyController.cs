@@ -44,14 +44,19 @@ public class RubyController : MonoBehaviourPun
     AudioSource audioSource;
     public void Awake()
     {
-        if (photonView.IsMine)
+        if (nameText.text != null)
         {
-            nameText.text = PhotonNetwork.NickName;
+
+            if (photonView.IsMine)
+            {
+                nameText.text = PhotonNetwork.NickName;
+            }
+            else
+            {
+                nameText.text = photonView.Owner.NickName;
+            }
         }
-        else
-        {
-            nameText.text = photonView.Owner.NickName;
-        }
+      
     }
     void Start()
     {
